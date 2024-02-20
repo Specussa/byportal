@@ -40,57 +40,12 @@
       </div>
     </div>
   </header>
+  <!-- <header class="header">
+    <div class="headerBar">
+      <div class="innerWrapper"></div>
+    </div>
+  </header> -->
 </template>
 
 <style lang="css" scoped>
-/* start header */
-.header {
-  width: 100%;
-  height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-
-.header__container {
-  height: 100%;
-}
-
-.header__block {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header__logo {
-  display: flex;
-  width: 70px;
-  height: 33px;
-  align-items: center;
-  justify-content: center;
-  object-fit: contain;
-}
-
-.header__flex {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header__add {
-  display: flex;
-  padding: 5px;
-  align-items: center;
-  gap: 10px;
-}
-
-.header__buttons,
-.header__buttons a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* end header */
 </style>
