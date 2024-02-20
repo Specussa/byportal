@@ -203,3 +203,10 @@ section {
   min-height: calc(100vh - 1px);
   flex-direction: column;
 }
+
+
+@media (max-width: 580px) {
+  .container {
+    padding: 0 15px;
+  }
+}
