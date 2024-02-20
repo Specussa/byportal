@@ -115,6 +115,16 @@
 
 /* start mobile */
 @media (max-width: 580px) {
+  .header__flex {
+    gap: 5px;
+  }
+  .header__add {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
   .header__add span {
     display: none;
   }
