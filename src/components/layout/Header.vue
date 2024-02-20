@@ -13,7 +13,7 @@
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5259 3.54102C10.8711 3.54147 11.1505 3.82166 11.1501 4.16683L11.1348 15.8335C11.1343 16.1787 10.8541 16.4581 10.5089 16.4577C10.1638 16.4572 9.88431 16.177 9.88477 15.8319L9.90006 4.1652C9.90051 3.82002 10.1807 3.54056 10.5259 3.54102Z" fill="currentColor"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.04102 10C4.04102 9.65482 4.32084 9.375 4.66602 9.375H16.3327C16.6779 9.375 16.9577 9.65482 16.9577 10C16.9577 10.3452 16.6779 10.625 16.3327 10.625H4.66602C4.32084 10.625 4.04102 10.3452 4.04102 10Z" fill="currentColor"/>
               </svg>
-              Создать статью
+              <span>Создать статью</span>
             </RouterLink>
             <div class="header__buttons">
               <RouterLink class="header__search" to="/">
@@ -40,12 +40,84 @@
       </div>
     </div>
   </header>
-  <!-- <header class="header">
-    <div class="headerBar">
-      <div class="innerWrapper"></div>
-    </div>
-  </header> -->
 </template>
 
 <style lang="css" scoped>
+/* start header */
+.header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--bg-gray);
+  overflow: hidden;
+}
+.header__container:before {
+  content: "";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+.header::before {
+  content: "";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  z-index: 0;
+  opacity: 0.26;
+  background-color: var(--bg-gray);
+}
+.header__container {
+  height: 100%;
+}
+.header__block {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+.header__logo {
+  display: flex;
+  width: 70px;
+  height: 33px;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+}
+.header__flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header__add {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  gap: 10px;
+}
+.header__buttons,
+.header__buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* end header */
+
+/* start mobile */
+@media (max-width: 580px) {
+  .header__add span {
+    display: none;
+  }
+}
+/* end mobile */
 </style>

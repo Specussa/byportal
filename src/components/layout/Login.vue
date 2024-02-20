@@ -60,4 +60,8 @@ const links = ref ([
 </template>
 
 <style lang="css" scoped>
+  .innerContainer {
+    position: absolute;
+    top: -100%;
+  }
 </style>

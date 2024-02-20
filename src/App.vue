@@ -9,7 +9,6 @@
 <template>
   <LayoutHeader/>
   <main class="main">
-    <img class="main__back" alt="background image" src="@/assets/img/main/bg.webp"/>
     <LayoutTop />
     <RouterView />
   </main>
