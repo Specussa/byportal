@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Editor directories and files
 node_modules
 .DS_Store
 dist
@@ -17,7 +18,6 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
-# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -29,19 +29,12 @@ coverage
 
 *.tsbuildinfo
 !**/glob-import/dir/node_modules
-.DS_Store
-.idea
 .pnpm-store
 *.cpuprofile
-*.local
-*.log
 /.vscode/
 /docs/.vitepress/cache
 /packages/vite/LICENSE
-dist
-dist-ssr
 explorations
-node_modules
 playground-temp
 temp
 TODOs.md

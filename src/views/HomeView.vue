@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+  document.title = 'Главная BY Portal';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <section>
+    <div class="container">
+      <h1>BY-Portal Home</h1>
+    </div>
+  </section>
 </template>
