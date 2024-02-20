@@ -48,13 +48,14 @@
 
 /* start mobile */
 @media (max-width: 580px) {
-  .footer__list {
-    flex-direction: column;
-    gap: 15px;
-  }
   .footer__block {
     flex-direction: column;
     gap: 30px;
+    text-align: center;
+  }
+  .footer__list {
+    flex-direction: column;
+    gap: 15px;
   }
 }
 /* end mobile */
