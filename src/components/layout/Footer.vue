@@ -4,6 +4,7 @@
       <div class="footer__block">
         <ul class="footer__list">
           <li class="footer__item">
+            <!-- {{$t('title')}} -->
             <RouterLink to="/policy">Политика конфиденциальности</RouterLink>
           </li>
           <li class="footer__item">

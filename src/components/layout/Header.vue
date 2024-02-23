@@ -1,3 +1,13 @@
+<script setup>
+  import { useI18n } from "vue-i18n"
+  const { t, locale } = useI18n({useScope: 'global'})
+
+  const switchLang = () => {
+    locale.value === 'en' ? locale.value = 'ru' : locale.value = 'en'
+    localStorage.setItem('lang', locale.value)
+  }
+</script>
+
 <template>
   <header class="header">
     <div class="container header__container">
@@ -16,6 +26,7 @@
               <span>Создать статью</span>
             </RouterLink>
             <div class="header__buttons">
+              <span @click="switchLang">{{ $t('langs') }}</span>
               <RouterLink class="header__search" to="/">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M11.041 18.7493C11.041 14.4922 14.4922 11.041 18.7493 11.041C23.0065 11.041 26.4577 14.4922 26.4577 18.7493C26.4577 23.0065 23.0065 26.4577 18.7493 26.4577C14.4922 26.4577 11.041 23.0065 11.041 18.7493ZM18.7493 12.291C15.1825 12.291 12.291 15.1825 12.291 18.7493C12.291 22.3162 15.1825 25.2077 18.7493 25.2077C22.3162 25.2077 25.2077 22.3162 25.2077 18.7493C25.2077 15.1825 22.3162 12.291 18.7493 12.291Z" fill="currentColor"/>
