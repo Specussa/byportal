@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineConfig({
+  base: "/byportal",
   plugins: [
     vue(),
     VueI18nPlugin({
@@ -12,7 +13,6 @@ export default defineConfig({
       include: resolve(dirname(fileURLToPath(import.meta.url)), './src/i18n/locales/**'),
     })
   ],
-  base: "/byportal",
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
