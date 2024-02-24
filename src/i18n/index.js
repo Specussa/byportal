@@ -1,9 +1,18 @@
-import en from './en.json'
-import ru from './ru.json'
+import { createI18n } from "vue-i18n"
+import pluralRules from "./rules/pluralization"
+import numberFormats from "./rules/numbers.js"
+import datetimeFormats from "./rules/datetime.js"
+import en from "./locales/en.json"
+import ru from "./locales/ru.json"
 
-export const defaultLocal = 'en'
-
-export const languages = {
-  en,
-  ru
-}
+export default createI18n({
+  locale: import.meta.env.VITE_DEFAULT_LOCALE,
+  fallbackLocale: import.meta.env.VITE_FALLBACK_LOCALE,
+  legacy: false,
+  globalInjection: true,
+  messages: { en, ru },
+  runtimeOnly: false,
+  pluralRules,
+  numberFormats,
+  datetimeFormats
+})

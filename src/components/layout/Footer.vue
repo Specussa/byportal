@@ -4,14 +4,13 @@
       <div class="footer__block">
         <ul class="footer__list">
           <li class="footer__item">
-            <!-- {{$t('title')}} -->
-            <RouterLink to="/policy">Политика конфиденциальности</RouterLink>
+            <RouterLink :to="Tr.i18nRoute({ name: 'policy' })">Политика конфиденциальности</RouterLink>
           </li>
           <li class="footer__item">
-            <RouterLink to="/rules">Правила пользования платформой</RouterLink>
+            <RouterLink :to="Tr.i18nRoute({ name: 'rules' })">Правила пользования платформой</RouterLink>
           </li>
           <li class="footer__item">
-            <RouterLink to="/offer">Оферта</RouterLink>
+            <RouterLink :to="Tr.i18nRoute({ name: 'offer' })">Оферта</RouterLink>
           </li>
         </ul>
         <p class="footer__copyright">© <span id="footer__year">{{new Date().getFullYear()}}</span>, Все права защищены</p>
@@ -19,6 +18,18 @@
     </div>
   </footer>
 </template>
+
+<script>
+  import LanguageSwitcher from "@/components/LanguageSwitcher.vue"
+  import Tr from "@/i18n/translation"
+
+  export default {
+    components: { LanguageSwitcher },
+    setup() {
+      return { Tr }
+    }
+  }
+</script>
 
 <style lang="css" scoped>
 /* start footer */

@@ -1,9 +1,0 @@
-{
-  "langs": "RU",
-  "title": "Авторизация",
-  "placeholders": {
-    "username": "Имя пользователя",
-    "password": "Пароль"
-  },
-  "forgot": "Забыли пароль?"
-}

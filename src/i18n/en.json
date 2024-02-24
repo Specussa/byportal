@@ -1,9 +1,0 @@
-{
-  "langs": "EN",
-  "title": "Log in",
-  "placeholders": {
-    "username": "Username",
-    "password": "Password"
-  },
-  "forgot": "Forgot password?"
-}
