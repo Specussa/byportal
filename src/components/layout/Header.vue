@@ -21,6 +21,7 @@
   </nav>
 
   <LanguageSwitcher></LanguageSwitcher>
+  <ThemeSwitcher></ThemeSwitcher>
             <RouterLink class="header__add" :to="Tr.i18nRoute({ name: 'home' })">
               <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5259 3.54102C10.8711 3.54147 11.1505 3.82166 11.1501 4.16683L11.1348 15.8335C11.1343 16.1787 10.8541 16.4581 10.5089 16.4577C10.1638 16.4572 9.88431 16.177 9.88477 15.8319L9.90006 4.1652C9.90051 3.82002 10.1807 3.54056 10.5259 3.54102Z" fill="currentColor"/>
@@ -56,11 +57,12 @@
 </template>
 
 <script>
+  import ThemeSwitcher from "@/components/ThemeSwitcher.vue"
   import LanguageSwitcher from "@/components/LanguageSwitcher.vue"
   import Tr from "@/i18n/translation"
 
   export default {
-    components: { LanguageSwitcher },
+    components: { LanguageSwitcher, ThemeSwitcher },
     setup() {
       return { Tr }
     }
