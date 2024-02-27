@@ -1,7 +1,6 @@
 <script setup>
   import LayoutHeader from "./components/layout/Header.vue"
   import LayoutFooter from "./components/layout/Footer.vue"
-  import LayoutLogin from "./components/layout/Login.vue"
   import LayoutRegistration from "./components/layout/Registration.vue"
   import LayoutTop from "./components/layout/Top.vue"
 </script>
@@ -13,7 +12,6 @@
     <RouterView />
   </main>
   <LayoutFooter/>
-  <LayoutLogin/>
   <LayoutRegistration/>
 </template>
 

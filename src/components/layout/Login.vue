@@ -1,67 +1,133 @@
-<!-- <script setup>
-import {ref} from "vue";
+<script setup>
+import {ref, computed} from 'vue'
+import useVuelidate from '@vuelidate/core'
+import {helpers, minLength, maxLength, numeric, email, sameAs} from '@vuelidate/validators'
 
-const links = ref ([
-  {name: 'Typography', href: '/typography'},
-  {name: 'Button', href: '/button'},
-])
+import Input from '@/components/Input.vue'
+import Button from '@/components/Button.vue'
+
+const nameField = ref('')
+const emailField = ref('')
+const luckyField = ref('')
+const passwordField = ref('')
+const confirmPasswordField = ref('')
+const frontendField = ref('')
+
+const mustBeFrontend = (value) => value.includes('frontend')
+
+const rules = computed(() => ({
+  nameField: {
+    minLength: helpers.withMessage(`Минимальная длина: 3 символа`, minLength(3))
+  },
+  emailField: {
+    email: helpers.withMessage('Вы ввели неверный email', email)
+  },
+  luckyField: {
+    maxLength: helpers.withMessage(`Максимальная длина: 2 символа`, maxLength(3)),
+    numeric: helpers.withMessage('Вы можете ввести только цифры', numeric)
+  },
+  confirmPasswordField: {
+    sameAsPassword: helpers.withMessage(`Пароли не совпадают`, sameAs(passwordField.value))
+  },
+  frontendField: {
+    frontendField: helpers.withMessage('Строка должна содержать слово frontend', mustBeFrontend)
+  }
+}))
+
+const v = useVuelidate(rules, {nameField, emailField, luckyField, confirmPasswordField, frontendField})
+
+const submitForm = () => {
+  v.value.$touch()
+  if (v.value.$error) return
+  alert('Form submitted')
+}
+
+const props = defineProps({
+  openSidebar: {
+    type: Boolean,
+    required: true,
+  },
+});
 </script>
 
 <template>
-  <div class="sidebar">
-    <router-link class="sidebar__link" v-for="link in links" :key="link.name" :to="link.href">
-      {{link.name}}
-    </router-link>
-  </div>
-</template> -->
+  <div :class="['sidebar', { sidebar_isopen: openSidebar }]">
+    <h1 class="heading-1">Inputs</h1>
 
-<template>
-  <div class="innerContainer">
-    <div class="intro">
-      <h2 class="normalTitle">Login</h2>
-      <div class="text lightGrey">
-        <p>Welcome back</p>
-      </div>
-      </div>
-      <form id="login_account" action="/en/account/login" method="POST">
-        <div class="fields">
-          <div class="field">
-            <label for="email">E-mailaddress</label>
-            <input type="email" name="email" id="email" placeholder="E-mailaddress" required="">
-          </div>
-          <div class="field viewPasswordField hide">
-            <label for="password">Password</label>
-            <input id="password" type="password" name="password" placeholder="Password" required="">
-            <div class="viewPassword">
-              <i class="icon-view view"></i>
-              <i class="icon-hide hide"></i>
-            </div>
-          </div>
-          <div class="field submit submitWrapper">
-            <div class="notificationMessage error" style="display:none;">
-            <div class="innerNotification"></div>
-            <div class="close">
-              <i class="icon-close"></i>
-            </div>
-          </div>
-          <button class="submit button">Log in</button>
-        </div>
-      </div>
-      <div class="link">
-        <a href="/en/account/forgot-password">Forgot password?</a>
-      </div>
-      <div class="divider"></div>
-      <div class="link">
-        <span class="preText">No account yet?</span>
-        <a href="/en/account/create-account">Create account</a>
-      </div>
+    <form @submit.prevent="submitForm">
+      <Input
+        label="Your name"
+        name="name"
+        placeholder="Input your name"
+        v-model:value="v.nameField.$model"
+        :error="v.nameField.$errors"/>
+        
+      <Input
+        label="Your email"
+        name="email"
+        placeholder="Input your email"
+        v-model:value="v.emailField.$model"
+        :error="v.emailField.$errors"/>
+        
+      <Input
+        label="Your lucky number"
+        name="lucky"
+        placeholder="Input your lucky number"
+        v-model:value="v.luckyField.$model"
+        :error="v.luckyField.$errors"/>
+        
+      <Input
+        label="Your password"
+        name="password"
+        placeholder="Please input password"
+        v-model:value="passwordField"
+        type="password"/>
+        
+      <Input
+        label="Confirm password"
+        name="confirm"
+        placeholder="Please confirm password"
+        v-model:value="v.confirmPasswordField.$model"
+        :error="v.confirmPasswordField.$errors"
+        type="password"/>
+
+      <Input
+        label="Frontend string"
+        name="frontend"
+        placeholder="Input string with frontend"
+        v-model:value="v.frontendField.$model"
+        :error="v.frontendField.$errors"/>
+
+      <Button label="Submit" color="primary"></Button>
     </form>
   </div>
 </template>
 
-<style lang="css" scoped>
-  .innerContainer {
-    position: absolute;
-    top: -100%;
-  }
+<style>
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  position: absolute;
+  top: calc(50% + 80px);
+  left: 50%;
+  z-index: 99;
+  transition: 0.2s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.07);
+  transform: translate(-50%,-150%);
+  background: #fff;
+}
+.sidebar_isopen {
+  transform: translate(-50%,-50%);
+}
+.sidebar__link {
+  display: block;
+  border-radius: 12px;
+  border: 2px solid #fff;
+  transition: 0.2s;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.sidebar__link:hover {
+  color: var(--primary);
+}
 </style>
