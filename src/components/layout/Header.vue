@@ -135,7 +135,7 @@ const clickOverlay = () => {
   top: -50%;
   left: -50%;
   z-index: 0;
-  opacity: 0.26;
+  opacity: 0.7;
   background-color: var(--bg-gray);
 }
 .header__container {
