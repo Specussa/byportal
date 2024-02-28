@@ -158,36 +158,16 @@ button:hover {
   cursor: pointer;
 }
 
-a,
-a b,
-a h1,
-a h2,
-a h3,
-a h4,
-a h5,
-a span {
-  color: var(--text);
+a {
+  color: var(--color);
   -webkit-transition: color 0.15s linear;
   transition: color 0.15s linear;
   text-decoration: none;
   cursor: pointer;
 }
 
-b {
-  -webkit-transition: color 0.15s linear;
-  transition: color 0.15s linear;
-}
-
-a:hover,
-a:hover b,
-a:hover h1,
-a:hover h2,
-a:hover h3,
-a:hover h4,
-a:hover h5,
-a:hover h6,
-a:hover span {
-  color: var(--color);
+a:hover {
+  color: var(--hover);
   text-decoration: none;
 }
 
@@ -195,7 +175,6 @@ ul,
 p,
 label,
 div,
-a,
 h1,
 h2,
 h3,
@@ -217,7 +196,6 @@ label,
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
-  color: var(--text);
 }
 
 h1 {

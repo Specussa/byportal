@@ -52,6 +52,13 @@ const props = defineProps({
         type="password"/>
 
       <button type="submit" class="btn btn__primary btn__login">Войти</button>
+
+      <a class="btn__forgot">Забыли пароль?</a>
+
+      <div class="header__form_bottom">
+        <p class="header__form_desc text_five">Нет аккаунта?</p>
+        <a class="header__registration">Зарегистрироваться</a>
+      </div>
     </form>
   </div>
 </template>
@@ -82,6 +89,20 @@ const props = defineProps({
   flex-direction: column;
   gap: 20px;
   border-bottom: 1px solid var(--border);
+}
+
+.header__form_bottom {
+  display: flex;
+  padding: 40px 0 0;
+  margin: 40px 0 0;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.btn__forgot {
+  display: block;
+  padding: 30px 0 0;
 }
 
 .header__form_link {
