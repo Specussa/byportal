@@ -5,29 +5,28 @@
   --progress: 0;
   --title-font: 'Open Sans', sans-serif;
   --text-font: 'Open Sans', sans-serif;
-  --bg: #19191C;
+  --white: #fff;
+  --black: #000;
+  --bg: #19191c;
   --bg-gray: #333333;
   --bg-dgray: #1f1f22;
   --text: #fff;
   --text-gray: #696969;
-  --white: #fff;
-  --black: #000;
+  --text-placeholder: #696969;
   --border: #333333;
-  --hover: #fd766d;
+  --color: #fd766d;
+  --hover: #ff655b;
+  --hover-gray: #8b8b8b;
   --error: #d91717;
+}
 
-  --primary: #6979f8;
-  --primary-hover: #A5AFFB;
-  --second: #BE52F2;
-  --second-hover: #DBA5F5;
-  --success: #00C48C;
-  --success-hover: #7DDFC3;
-  --info: #0084F4;
-  --info-hover: #66B5F8;
-  --warning: #FFA26B;
-  --warning-hover: #FFC7A6;
-  --danger: #FF647C;
-  --danger-hover: #FDAFBB;
+:root.light {
+  --bg: #fafafa;
+  --bg-dgray: #fff;
+  --text: #19191c;
+  --text-gray: #76767a;
+  --text-placeholder: #b9b9b9;
+  --border: #f2f2f2;
 }
 
 * {
@@ -56,7 +55,7 @@
 
 ::-webkit-scrollbar-thumb {
   width: 8px;
-  background: var(--hover);
+  background: var(--color);
 }
 
 html {
@@ -143,9 +142,12 @@ select {
   cursor: pointer;
 }
 
+button {
+  padding: 0;
+}
+
 button,
 button:hover {
-  padding: 0;
   outline: 0;
   border: none;
   background-color: transparent;
@@ -184,7 +186,7 @@ a:hover h4,
 a:hover h5,
 a:hover h6,
 a:hover span {
-  color: var(--hover);
+  color: var(--color);
   text-decoration: none;
 }
 
@@ -201,7 +203,7 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
-  color: var(--white);
+  color: var(--text);
 }
 
 a,
@@ -323,7 +325,7 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--text-gray);
+  color: var(--text-placeholder);
 }
 
 small {
@@ -390,6 +392,46 @@ section {
 
 .overlay.active::before {
   background-color: var(--bg-gray);
+}
+
+.btn {
+  display: flex;
+  padding: 15px 30px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--text-font);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 26px;
+  -webkit-transition: color 0.15s linear, background-color 0.15s linear, border-color 0.15s linear;
+  transition: color 0.15s linear, background-color 0.15s linear, border-color 0.15s linear;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+.btn__primary {
+  color: var(--white);
+  background-color: var(--color);
+}
+
+.btn__primary:hover {
+  background-color: var(--hover);
+}
+
+.btn__second {
+  color: var(--text);
+  border: 1px solid var(--text-gray);
+}
+
+.btn__second:hover {
+  color: var(--hover-gray);
+  border: 1px solid var(--hover-gray);
 }
 
 @media (max-width: 580px) {

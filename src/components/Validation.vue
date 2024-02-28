@@ -83,7 +83,7 @@ const updateValue = (e) => {
 
 }
 .form__input:focus + .form__label {
-  color: var(--hover);
+  color: var(--color);
   -webkit-transform: translateY(10px);
   transform: translateY(10px);
 }

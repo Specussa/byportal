@@ -4,7 +4,6 @@ import useVuelidate from '@vuelidate/core'
 import {helpers, minLength, maxLength, numeric, email, sameAs} from '@vuelidate/validators'
 
 import Input from '@/components/Validation.vue'
-import Button from '@/components/Button.vue'
 
 const nameField = ref('')
 const emailField = ref('')
@@ -100,7 +99,7 @@ const props = defineProps({
         v-model:value="v.frontendField.$model"
         :error="v.frontendField.$errors"/>
 
-      <Button label="Submit" color="primary"></Button>
+      <button type="submit" class="btn btn__primary btn__login">Войти</button>
     </form>
   </div>
 </template>
@@ -144,5 +143,10 @@ const props = defineProps({
 
 .header__form_link:hover {
   color: var(--primary);
+}
+
+.btn__login {
+  width: 100%;
+  margin: 10px 0 0;
 }
 </style>
