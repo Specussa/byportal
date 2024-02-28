@@ -330,7 +330,7 @@ textarea::placeholder {
 
 small {
   font-family: var(--text-font);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 12px;
 	color: var(--error);

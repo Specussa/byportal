@@ -82,7 +82,8 @@ const updateValue = (e) => {
 .form__input:not(:placeholder-shown) + .form__label {
 
 }
-.form__input:focus + .form__label {
+.form__input:focus + .form__label,
+.form__label:focus {
   color: var(--color);
   -webkit-transform: translateY(10px);
   transform: translateY(10px);
