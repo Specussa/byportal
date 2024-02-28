@@ -3,7 +3,7 @@ import {ref, computed} from 'vue'
 import useVuelidate from '@vuelidate/core'
 import {helpers, minLength, maxLength, numeric, email, sameAs} from '@vuelidate/validators'
 
-import Input from '@/components/Input.vue'
+import Input from '@/components/Validation.vue'
 import Button from '@/components/Button.vue'
 
 const nameField = ref('')
@@ -43,7 +43,7 @@ const submitForm = () => {
 }
 
 const props = defineProps({
-  openSidebar: {
+  openLogin: {
     type: Boolean,
     required: true,
   },
@@ -51,9 +51,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <div :class="['sidebar', { sidebar_isopen: openSidebar }]">
-    <h1 class="heading-1">Inputs</h1>
-
+  <div :class="['header__form_block', { active: openLogin }]">
+    <h4 class="header__form_head">Войти</h4>
+    <p class="header__form_desc text_five">Добро пожаловать на блог-платформу By-portal!</p>
     <form @submit.prevent="submitForm">
       <Input
         label="Your name"
@@ -104,22 +104,25 @@ const props = defineProps({
 </template>
 
 <style>
-.sidebar {
-  width: 250px;
-  padding: 20px;
-  position: absolute;
-  top: calc(50% + 80px);
-  left: 50%;
-  z-index: 99;
-  transition: 0.2s;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.07);
-  transform: translate(-50%,-150%);
-  background: #fff;
+.header__form_block {
+  display: flex;
+  height: 100%;
+  max-height: calc(var(--height) - 160px);
+  padding: 50px 40px;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
-.sidebar_isopen {
-  transform: translate(-50%,-50%);
+
+.header__form_block::-webkit-scrollbar {
+  display: none;
 }
-.sidebar__link {
+
+.header__form_block::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.header__form_link {
   display: block;
   border-radius: 12px;
   border: 2px solid #fff;
@@ -127,7 +130,8 @@ const props = defineProps({
   font-weight: bold;
   margin-bottom: 10px;
 }
-.sidebar__link:hover {
+
+.header__form_link:hover {
   color: var(--primary);
 }
 </style>

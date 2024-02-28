@@ -3,16 +3,17 @@
   --height: 100vh;
   --hscroll: 0px;
   --progress: 0;
-  --title-font: 'Raleway', sans-serif;
-  --text-font: 'Roboto', sans-serif;
-  --bg: #161616;
+  --title-font: 'Open Sans', sans-serif;
+  --text-font: 'Open Sans', sans-serif;
+  --bg: #19191C;
   --bg-gray: #333333;
-  --text: #2b2a28;
-  --gray: #c4c4c4;
+  --bg-dgray: #1F1F22;
+  --text: #fff;
+  --text-gray: #696969;
   --white: #fff;
   --black: #000;
-  --border: #3F3F3F;
-  --red: #ef0010;
+  --border: #333333;
+  --hover: #FD766D;
   --error: #d91717;
 
   --primary: #6979f8;
@@ -55,20 +56,7 @@
 
 ::-webkit-scrollbar-thumb {
   width: 8px;
-  background: var(--red);
-}
-
-html {
-  height: 100%;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  background: var(--hover);
 }
 
 html {
@@ -85,6 +73,7 @@ html {
 }
 
 html.noscroll {
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -129,12 +118,20 @@ img {
   pointer-events: none;
 }
 
+select {
+  outline: none;
+  cursor: pointer;
+}
+
 button, button:hover {
+  padding: 0;
   outline: 0;
   border: none;
+  background-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  cursor: pointer;
 }
 
 a,
@@ -164,8 +161,9 @@ a:hover h2,
 a:hover h3,
 a:hover h4,
 a:hover h5,
+a:hover h6,
 a:hover span {
-  color: var(--red);
+  color: var(--hover);
   text-decoration: none;
 }
 
@@ -190,13 +188,98 @@ p,
 li,
 label,
 [data-select-title],
-[data-select-item],
-.catalog__head span {
+[data-select-item] {
   font-family: var(--text-font);
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
   color: var(--white);
+}
+
+h1 {
+  font-family: var(--title-font);
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 76px;
+}
+
+h2 {
+  font-family: var(--title-font);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 42px;
+}
+
+h3 {
+  font-family: var(--title-font);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 34px;
+}
+
+h4 {
+  font-family: var(--title-font);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 33px;
+}
+
+h5 {
+  font-family: var(--title-font);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+}
+
+.text_one {
+  font-family: var(--text-font);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 27px;
+}
+
+.text_two {
+  font-family: var(--text-font);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.text_three {
+  font-family: var(--text-font);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 31px;
+}
+
+.text_four {
+  font-family: var(--text-font);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+.text_five {
+  font-family: var(--text-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-gray);
+}
+
+.text_small {
+  font-family: var(--text-font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.text_quote {
+  font-family: var(--text-font);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 30px;
 }
 
 section {
@@ -217,6 +300,45 @@ section {
   flex-direction: column;
 }
 
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 98;
+  visibility: hidden;
+  -webkit-transition: visibility 0s linear 0.2s, backdrop-filter 0.2s linear;
+  transition: visibility 0s linear 0.2s, backdrop-filter 0.2s linear;
+  -webkit-transition-delay: 0.6s, 0.4s;
+  transition-delay: 0.6s, 0.4s;
+}
+
+.overlay.active {
+  visibility: visible;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  -webkit-transition-delay: 0s, 0s;
+  transition-delay: 0s, 0s;
+}
+
+.overlay::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0.26;
+  background-color: transparent;
+  -webkit-transition: background-color 0.3s linear;
+  transition: background-color 0.3s linear;
+}
+
+.overlay.active::before {
+  background-color: var(--bg-gray);
+}
 
 @media (max-width: 580px) {
   .container {

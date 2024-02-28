@@ -1,12 +1,36 @@
 <script setup>
-  import LayoutLogin from "@/components/layout/Login.vue"
-  import { ref } from "vue";
+import LayoutLogin from "@/components/layout/Login.vue"
+import { ref } from "vue";
 
-  const isOpenLogin = ref(false);
+const isOpenLogin = ref(false);
 
-  const toggleLogin = () => {
-    isOpenLogin.value = !isOpenLogin.value;
-  };
+const toggleLogin = () => {
+  isOpenLogin.value = !isOpenLogin.value;
+};
+
+const clickCloseHeaderForm = () => {
+  isOpenLogin.value = false;
+};
+
+const clickOverlay = () => {
+  isOpenLogin.value = false;
+};
+
+// const barVM = new Vue({
+//   el: '#bar',
+//   data: {
+//     isActive: false
+//   }
+// })
+
+// new Vue({
+//   el: '#toggle',
+//   methods: {
+//     show: function() {
+//       barVM.isActive = true
+//     }
+//   }
+// })
 </script>
 
 <template>
@@ -19,20 +43,21 @@
             </svg>
           </RouterLink>
           <div class="header__flex">
-  <nav>
-    <ul>
-      <li>
-        <RouterLink :to="Tr.i18nRoute({ name: 'home' })">{{ $t("nav.home") }}</RouterLink>
-      </li>
-      
-      <li>
-        <RouterLink :to="Tr.i18nRoute({ name: 'about' })">{{ $t("nav.about") }}</RouterLink>
-      </li>
-    </ul>
-  </nav>
 
-  <LanguageSwitcher></LanguageSwitcher>
-  <ThemeSwitcher></ThemeSwitcher>
+            <nav>
+              <ul>
+                <li>
+                  <RouterLink :to="Tr.i18nRoute({ name: 'home' })">{{ $t("nav.home") }}</RouterLink>
+                </li>
+                
+                <li>
+                  <RouterLink :to="Tr.i18nRoute({ name: 'about' })">{{ $t("nav.about") }}</RouterLink>
+                </li>
+              </ul>
+            </nav>
+
+            <LanguageSwitcher></LanguageSwitcher>
+            <ThemeSwitcher></ThemeSwitcher>
             <RouterLink class="header__add" :to="Tr.i18nRoute({ name: 'home' })">
               <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5259 3.54102C10.8711 3.54147 11.1505 3.82166 11.1501 4.16683L11.1348 15.8335C11.1343 16.1787 10.8541 16.4581 10.5089 16.4577C10.1638 16.4572 9.88431 16.177 9.88477 15.8319L9.90006 4.1652C9.90051 3.82002 10.1807 3.54056 10.5259 3.54102Z" fill="currentColor"/>
@@ -47,12 +72,12 @@
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M23.3999 23.3999C23.6439 23.1558 24.0397 23.1558 24.2837 23.3999L27.8193 26.9354C28.0634 27.1795 28.0634 27.5752 27.8193 27.8193C27.5752 28.0634 27.1795 28.0634 26.9354 27.8193L23.3999 24.2837C23.1558 24.0397 23.1558 23.6439 23.3999 23.3999Z" fill="currentColor"/>
                 </svg>
               </RouterLink>
-              <div class="header__login" @click="toggleLogin">
+              <a class="header__login" @click="toggleLogin">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M16.459 15.4167C16.459 13.4607 18.0446 11.875 20.0007 11.875C21.9567 11.875 23.5423 13.4607 23.5423 15.4167C23.5423 17.3727 21.9567 18.9583 20.0007 18.9583C18.0446 18.9583 16.459 17.3727 16.459 15.4167ZM20.0007 13.125C18.735 13.125 17.709 14.151 17.709 15.4167C17.709 16.6823 18.735 17.7083 20.0007 17.7083C21.2663 17.7083 22.2923 16.6823 22.2923 15.4167C22.2923 14.151 21.2663 13.125 20.0007 13.125Z" fill="currentColor"/>
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M17.8058 21.041H22.1942C23.1043 21.041 23.8255 21.041 24.4069 21.0885C25.0014 21.1371 25.5044 21.2384 25.9637 21.4724C26.7085 21.8519 27.3141 22.4575 27.6936 23.2023C27.9276 23.6616 28.0289 24.1647 28.0775 24.7591C28.125 25.3405 28.125 26.0617 28.125 26.9718V27.4993C28.125 27.8445 27.8452 28.1243 27.5 28.1243H12.5C12.1548 28.1243 11.875 27.8445 11.875 27.4993L11.875 26.9718C11.875 26.0617 11.875 25.3405 11.9225 24.7591C11.9711 24.1646 12.0724 23.6616 12.3064 23.2023C12.6859 22.4575 13.2915 21.8519 14.0363 21.4724C14.4956 21.2384 14.9986 21.1371 15.5931 21.0885C16.1745 21.041 16.8957 21.041 17.8058 21.041ZM14.6038 22.5862C14.0942 22.8459 13.6798 23.2602 13.4202 23.7698C13.2909 24.0235 13.2106 24.3437 13.1683 24.8609C13.1274 25.362 13.1251 25.996 13.125 26.8743H26.875C26.8749 25.996 26.8726 25.362 26.8317 24.8609C26.7894 24.3437 26.7091 24.0235 26.5798 23.7698C26.3202 23.2602 25.9058 22.8459 25.3962 22.5862M14.6038 22.5862C14.8575 22.4569 15.1777 22.3766 15.6949 22.3344C16.2194 22.2915 16.8896 22.291 17.8333 22.291H22.1667C23.1104 22.291 23.7806 22.2915 24.3051 22.3344C24.8223 22.3766 25.1425 22.4569 25.3962 22.5862" fill="currentColor"/>
                 </svg>
-              </div>
+              </a>
               <RouterLink class="header__burger" :to="Tr.i18nRoute({ name: 'home' })">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6875 14.9785C12.6875 14.6333 12.9673 14.3535 13.3125 14.3535H26.6458C26.991 14.3535 27.2708 14.6333 27.2708 14.9785C27.2708 15.3237 26.991 15.6035 26.6458 15.6035H13.3125C12.9673 15.6035 12.6875 15.3237 12.6875 14.9785Z" fill="currentColor"/>
@@ -65,10 +90,16 @@
       </div>
     </div>
   </header>
-  <LayoutLogin :openSidebar="isOpenLogin" />
-  <!-- <div :class="['content', { content_full: !isOpenLogin }]">
-      <router-view />
-  </div> -->
+  <div :class="['header__form', { active: isOpenLogin }]">
+    <button class="header__form_close" @click="clickCloseHeaderForm">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.46967 6.46967C6.76256 6.17678 7.23744 6.17678 7.53033 6.46967L17.5303 16.4697C17.8232 16.7626 17.8232 17.2374 17.5303 17.5303C17.2374 17.8232 16.7626 17.8232 16.4697 17.5303L6.46967 7.53033C6.17678 7.23744 6.17678 6.76256 6.46967 6.46967Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5303 6.46967C17.8232 6.76256 17.8232 7.23744 17.5303 7.53033L7.53033 17.5303C7.23744 17.8232 6.76256 17.8232 6.46967 17.5303C6.17678 17.2374 6.17678 16.7626 6.46967 16.4697L16.4697 6.46967C16.7626 6.17678 17.2374 6.17678 17.5303 6.46967Z" fill="currentColor"/>
+      </svg>
+    </button>
+    <LayoutLogin :openLogin="isOpenLogin" />
+  </div>
+  <div :class="['overlay', { active: isOpenLogin }]" @click="clickOverlay"><span></span></div>
 </template>
 
 <script>
@@ -96,16 +127,6 @@
   border-bottom: 1px solid var(--bg-gray);
   overflow: hidden;
 }
-.header__container:before {
-  content: "";
-  width: 200%;
-  height: 200%;
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
-}
 .header::before {
   content: "";
   width: 200%;
@@ -119,6 +140,16 @@
 }
 .header__container {
   height: 100%;
+}
+.header__container::after {
+  content: "";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
 .header__block {
   display: flex;
@@ -152,6 +183,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.header__form {
+  width: 100%;
+  max-width: 560px;
+  max-height: calc(var(--height) - 160px);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 99;
+  opacity: 0;
+  border-radius: 25px;
+  border: 1px solid var(--border);
+  background-color: var(--bg);
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.77, 0, 0.175, 1) 0.15s, opacity 0.2s linear 0.4s;
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1) 0.15s, opacity 0.2s linear 0.4s;
+  -webkit-transform: translate(-50%,calc(-50vh - 80px - 100%));
+  transform: translate(-50%,calc(-50vh - 80px - 100%));
+  overflow: hidden;
+}
+
+.header__form.active {
+  opacity: 1;
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.15s, opacity 0.2s linear 0.2s;
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.15s, opacity 0.2s linear 0.2s;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.header__form_close {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  color: var(--text);
+  border-radius: 50%;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.2s linear, color 0.2s linear;
+  transition: transform 0.2s linear, color 0.2s linear;
+}
+
+.header__form_close:hover {
+  color: var(--hover);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 /* end header */
 

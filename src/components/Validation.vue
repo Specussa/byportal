@@ -33,16 +33,16 @@ const updateValue = (e) => {
 </script>
 
 <template>
-  <div class="form-input" :style="{width: width}">
+  <div class="form__control">
     <input
-      class="input-text"
+      class="form__input"
       :type="type"
       :name="name"
       :id="name"
       :placeholder="placeholder"
       :value="value"
       @input="updateValue">
-    <label :for="name" class="input-label">{{label}}</label>
+    <label :for="name" class="form__label">{{label}}</label>
     <TransitionGroup>
       <div
         class="form-error"
@@ -55,58 +55,52 @@ const updateValue = (e) => {
 </template>
 
 <style lang="css" scoped>
-.form-input {
+.form__control {
   margin-bottom: 30px;
   position: relative;
 }
 .form-error {
-  background: var(--danger);
-  margin-top: 4px;
-  border-radius: 7px;
-  font-size: 13px;
-  color: #fff;
   padding: 5px;
+  margin-top: 4px;
+  color: var(--white);
+  background-color: var(--error);
 }
 
-.input-text {
-  border: 1px solid var(--primary);
-  padding: 0 10px;
-  height: 40px;
-  border-radius: 7px;
-  font-size: 15px;
+.form__input {
   width: 100%;
+  height: 50px;
+  padding: 15px;
   position: relative;
   z-index: 1;
 }
-.input-text:focus + .input-label {
+.form__input:focus + .form__label {
+  top: -20px;
   z-index: 1;
   opacity: 1;
-  top: -20px;
 }
-.input-text:not(:placeholder-shown) + .input-label {
+.form__input:not(:placeholder-shown) + .form__label {
+  top: -20px;
   z-index: 1;
   opacity: 1;
-  top: -20px;
 }
-.input-label {
-  font-weight: bold;
+.form__label {
   display: block;
   position: absolute;
   top: 20px;
   opacity: 0;
   z-index: -1;
-  transition: 0.3s;
-  font-size: 13px;
   color: var(--primary);
+  -webkit-transition: top 0.3s linear;
+  transition: top 0.3s linear;
 }
 
-.v-enter-active,
-.v-leave-active {
+.form-error.v-enter-active,
+.form-error.v-leave-active {
   transition: opacity 0.5s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
+.form-error.v-enter-from,
+.form-error.v-leave-to {
   opacity: 0;
 }
 </style>
