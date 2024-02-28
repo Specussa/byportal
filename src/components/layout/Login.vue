@@ -52,8 +52,10 @@ const props = defineProps({
 
 <template>
   <div :class="['header__form_block', { active: openLogin }]">
-    <h4 class="header__form_head">Войти</h4>
-    <p class="header__form_desc text_five">Добро пожаловать на блог-платформу By-portal!</p>
+    <div class="header__form_top">
+      <h4 class="header__form_head">Войти</h4>
+      <p class="header__form_desc text_five">Добро пожаловать на блог-платформу By-portal!</p>
+    </div>
     <form @submit.prevent="submitForm">
       <Input
         label="Your name"
@@ -110,6 +112,7 @@ const props = defineProps({
   max-height: calc(var(--height) - 160px);
   padding: 50px 40px;
   flex-direction: column;
+  gap: 40px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -120,6 +123,14 @@ const props = defineProps({
 
 .header__form_block::-webkit-scrollbar-thumb {
   display: none;
+}
+
+.header__form_top {
+  display: flex;
+  padding: 0 0 30px;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid var(--border);
 }
 
 .header__form_link {

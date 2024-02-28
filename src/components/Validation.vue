@@ -42,65 +42,69 @@ const updateValue = (e) => {
       :placeholder="placeholder"
       :value="value"
       @input="updateValue">
-    <label :for="name" class="form__label">{{label}}</label>
     <TransitionGroup>
       <div
-        class="form-error"
+        class="form__error"
         v-for="element of error"
         :key="element.$uid">
-        <div class="form-error__message">{{element.$message}}</div>
+        <small class="form__message">{{element.$message}}</small>
       </div>
     </TransitionGroup>
+    <label :for="name" class="form__label">{{label}}</label>
   </div>
 </template>
 
 <style lang="css" scoped>
 .form__control {
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
   position: relative;
 }
-.form-error {
-  padding: 5px;
-  margin-top: 4px;
-  color: var(--white);
-  background-color: var(--error);
-}
-
 .form__input {
   width: 100%;
   height: 50px;
   padding: 15px;
+  order: 2;
   position: relative;
   z-index: 1;
 }
-.form__input:focus + .form__label {
-  top: -20px;
-  z-index: 1;
-  opacity: 1;
-}
-.form__input:not(:placeholder-shown) + .form__label {
-  top: -20px;
-  z-index: 1;
-  opacity: 1;
-}
 .form__label {
   display: block;
-  position: absolute;
-  top: 20px;
-  opacity: 0;
-  z-index: -1;
-  color: var(--primary);
-  -webkit-transition: top 0.3s linear;
-  transition: top 0.3s linear;
+  margin: 0 0 15px;
+  color: var(--text);
+  order: 1;
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition: -webkit-transform 0.1s linear, color 0.1s linear;
+  transition: transform 0.1s linear, color 0.1s linear;
 }
+.form__input:not(:placeholder-shown) + .form__label {
 
-.form-error.v-enter-active,
-.form-error.v-leave-active {
-  transition: opacity 0.5s ease;
 }
-
-.form-error.v-enter-from,
-.form-error.v-leave-to {
+.form__input:focus + .form__label {
+  color: var(--hover);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+.form__error + .form__label {
+  color: var(--error);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+.form__error {
+  margin-top: 4px;
+  order: 3;
+}
+.form__error.v-enter-active,
+.form__error.v-leave-active {
+  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.form__error.v-enter-from,
+.form__error.v-leave-to {
   opacity: 0;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
 }
 </style>

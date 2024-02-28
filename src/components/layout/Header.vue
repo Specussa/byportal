@@ -124,7 +124,7 @@ const clickOverlay = () => {
   top: 0;
   left: 0;
   z-index: 100;
-  border-bottom: 1px solid var(--bg-gray);
+  border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
 .header::before {
