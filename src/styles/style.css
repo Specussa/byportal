@@ -175,6 +175,7 @@ ul,
 p,
 label,
 div,
+a,
 h1,
 h2,
 h3,
@@ -196,6 +197,7 @@ label,
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
+  color: var(--text);
 }
 
 h1 {

@@ -53,7 +53,7 @@ const props = defineProps({
 
       <button type="submit" class="btn btn__primary btn__login">Войти</button>
 
-      <a class="btn__forgot">Забыли пароль?</a>
+      <a class="header__forgot">Забыли пароль?</a>
 
       <div class="header__form_bottom">
         <p class="header__form_desc text_five">Нет аккаунта?</p>
@@ -100,9 +100,14 @@ const props = defineProps({
   border-top: 1px solid var(--border);
 }
 
-.btn__forgot {
+.header__forgot {
   display: block;
   padding: 30px 0 0;
+  color: var(--color);
+}
+
+.header__registration {
+  color: var(--color);
 }
 
 .header__form_link {
@@ -121,5 +126,15 @@ const props = defineProps({
 .btn__login {
   width: 100%;
   margin: 10px 0 0;
+}
+
+@media (max-width: 580px) {
+  .header__form_block {
+    padding: 30px 15px;
+    gap: 30px;
+  }
+  .header__form_bottom {
+    padding: 30px 0 0;
+  }
 }
 </style>

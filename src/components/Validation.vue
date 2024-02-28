@@ -58,7 +58,7 @@ const updateValue = (e) => {
 .form__control {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  padding: 0 0 20px;
   position: relative;
 }
 .form__input {

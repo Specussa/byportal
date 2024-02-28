@@ -6,14 +6,22 @@ const isOpenLogin = ref(false);
 
 const toggleLogin = () => {
   isOpenLogin.value = !isOpenLogin.value;
+  document.querySelector('.header__form_block').scrollTop = 0;
+  if (isOpenLogin.value) {
+    document.documentElement.classList.add("noscroll");
+  } else {
+    document.documentElement.classList.remove("noscroll");
+  }
 };
 
 const clickCloseHeaderForm = () => {
   isOpenLogin.value = false;
+  document.documentElement.classList.remove("noscroll");
 };
 
 const clickOverlay = () => {
   isOpenLogin.value = false;
+  document.documentElement.classList.remove("noscroll");
 };
 
 // const barVM = new Vue({
@@ -248,6 +256,25 @@ const clickOverlay = () => {
   }
   .header__add span {
     display: none;
+  }
+  .header__form {
+    max-width: 100%;
+    max-height: calc(var(--height) - 200px);
+    top: auto;
+    left: 0;
+    bottom: 0;
+    border-radius: 25px 25px 0 0;
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%);
+    overflow: hidden;
+  }
+  .header__form.active {
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+  }
+  .header__form_close {
+    top: 15px;
+    right: 15px;
   }
 }
 /* end mobile */
