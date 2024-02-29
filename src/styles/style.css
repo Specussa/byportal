@@ -117,9 +117,9 @@ textarea:-webkit-autofill:hover,
 select:-webkit-autofill,
 select:-webkit-autofill:hover {
   border: none;
-  -webkit-text-fill-color: var(--text-gray);
+  -webkit-text-fill-color: var(--text);
   -webkit-box-shadow: 0 0 0 1000px var(--bg-dgray) inset;
-  color: var(--text-gray);
+  color: var(--text);
   box-shadow: 0 0 0 1000px var(--bg-dgray) inset;
 }
 

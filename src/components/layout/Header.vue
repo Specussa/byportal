@@ -6,7 +6,7 @@ const isOpenLogin = ref(false);
 
 const toggleLogin = () => {
   isOpenLogin.value = !isOpenLogin.value;
-  document.querySelector('.header__form_block').scrollTop = 0;
+  document.querySelector('.form__popup').scrollTop = 0;
   if (isOpenLogin.value) {
     document.documentElement.classList.add("noscroll");
   } else {

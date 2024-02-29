@@ -54,7 +54,7 @@ const updateValue = (e) => {
   </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="css">
 .form__control {
   display: flex;
   flex-direction: column;
@@ -79,9 +79,9 @@ const updateValue = (e) => {
   -webkit-transition: -webkit-transform 0.1s linear, color 0.1s linear;
   transition: transform 0.1s linear, color 0.1s linear;
 }
-.form__input:not(:placeholder-shown) + .form__label {
+/* .form__input:not(:placeholder-shown) + .form__label {
 
-}
+} */
 .form__input:focus + .form__label,
 .form__label:focus {
   color: var(--color);
@@ -99,13 +99,36 @@ const updateValue = (e) => {
 }
 .form__error.v-enter-active,
 .form__error.v-leave-active {
-  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
 }
 .form__error.v-enter-from,
 .form__error.v-leave-to {
+  height: 0px;
+  margin: 0px;
   opacity: 0;
   -webkit-transform: translateY(-100%);
   transform: translateY(-100%);
+}
+
+.form__password {
+  position: relative;
+}
+
+.form__password_button {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  z-index: 1;
+}
+
+.form__password .form__password_button svg:nth-child(1),
+.form__password.active .form__password_button svg:nth-child(2) {
+  display: flex;
+}
+
+.form__password.active .form__password_button svg:nth-child(1),
+.form__password .form__password_button svg:nth-child(2) {
+  display: none;
 }
 </style>

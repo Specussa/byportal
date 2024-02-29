@@ -15,5 +15,15 @@
   "about": {
     "header": "About us",
     "donations": "Donations raised: {donations}"
+  },
+  "login": {
+    "head": "Сome in",
+    "desc": "Welcome to the By-portal blogging platform!",
+    "email": "E-mail",
+    "emailplace": "Enter email",
+    "emailerror": "Invalid email",
+    "pass": "Password",
+    "passplace": "Enter password",
+    "passerror": "Invalid password"
   }
 }

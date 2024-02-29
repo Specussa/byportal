@@ -15,5 +15,19 @@
   "about": {
     "header": "О нас",
     "donations": "Пожертвований собрано: {donations}"
+  },
+  "login": {
+    "head": "Войти",
+    "desc": "Добро пожаловать на блог-платформу By-portal!",
+    "email": "E-mail",
+    "emailplace": "Введите e-mail",
+    "emailerror": "Вы ввели неверный email",
+    "pass": "Пароль",
+    "passplace": "Введите пароль",
+    "passerror": "Не верный пароль"
+  },
+  "validations": {
+    "required": "The field {property} is required.",
+    "minLength": "The {property} field has a value of '{model}', but it must have a min length of {min}."
   }
 }
