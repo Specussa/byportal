@@ -1,17 +1,16 @@
 <script setup>
 import {ref, computed} from 'vue'
 import useVuelidate from '@vuelidate/core'
-import {helpers, minLength, maxLength, numeric, email, sameAs} from '@vuelidate/validators'
-
 import Input from '@/components/Validation.vue'
+import {helpers, minLength, maxLength, numeric, email, sameAs} from '@vuelidate/validators'
+import { required } from "@/i18n/translation";
+
 
 const emailField = ref('')
 const passwordField = ref('')
 
 const rules = computed(() => ({
-  emailField: {
-    email: helpers.withMessage('{{ $t("nav.home") }}', email)
-  },
+  emailField: { required, minLength: minLength(10) }
 }))
 
 const v = useVuelidate(rules, {emailField})

@@ -27,7 +27,8 @@
     "passerror": "Не верный пароль"
   },
   "validations": {
-    "required": "The field {property} is required.",
-    "minLength": "The {property} field has a value of '{model}', but it must have a min length of {min}."
+    "emailerror": "Вы ввели неверный email",
+    "required": "The field {property} is required. sadsadsa",
+    "minLength": "The {property} field has a value of '{model}', but it must have a min length of {min}. asdasdasd"
   }
 }
