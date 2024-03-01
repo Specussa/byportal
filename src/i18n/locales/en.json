@@ -21,16 +21,18 @@
     "desc": "Welcome to the By-portal blogging platform!",
     "email": "E-mail",
     "emailplace": "Enter email",
-    "emailerror": "Invalid email",
     "pass": "Password",
     "passplace": "Enter password",
-    "passerror": "Invalid password"
+    "forgot": "Forgot your password?",
+    "reg": "Register",
+    "have": "Don't have an account?",
+    "button": "Сome in",
   },
   "validations": {
     "params": "{property} and {model}' and {min}",
     "emailerror": "You entered an incorrect email",
     "required": "This field is required",
     "minLength": "Minimum number of characters - {min}.",
-    "maxLength": "Maximum number of characters {max}."
+    "maxLength": "Maximum number of characters - {max}."
   }
 }

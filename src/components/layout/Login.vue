@@ -10,7 +10,7 @@ const passwordField = ref('')
 
 const rules = computed(() => ({
   emailField: { required, minLength, maxLength, emailerror },
-  passwordField: { required },
+  passwordField: { required, maxLength },
 }))
 
 const v = useVuelidate(rules, {emailField, passwordField})
@@ -75,13 +75,13 @@ const logpassShowHide = () => {
         </a>
       </div>
 
-      <button type="submit" class="btn btn__primary form__button btn__login">Войти</button>
+      <button type="submit" class="btn btn__primary form__button btn__login">{{ $t("login.button") }}</button>
 
-      <a class="form__forgot">Забыли пароль?</a>
+      <a class="form__forgot">{{ $t("login.forgot") }}</a>
 
       <div class="form__bottom">
-        <p class="form__desc text_five">Нет аккаунта?</p>
-        <a class="form__registration">Зарегистрироваться</a>
+        <p class="form__desc text_five">{{ $t("login.have") }}</p>
+        <a class="form__registration">{{ $t("login.reg") }}</a>
       </div>
     </form>
   </div>

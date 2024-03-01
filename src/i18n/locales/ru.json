@@ -21,16 +21,18 @@
     "desc": "Добро пожаловать на блог-платформу By-portal!",
     "email": "E-mail",
     "emailplace": "Введите e-mail",
-    "emailerror": "Вы ввели неверный email",
     "pass": "Пароль",
     "passplace": "Введите пароль",
-    "passerror": "Не верный пароль"
+    "forgot": "Забыли пароль?",
+    "reg": "Зарегистрироваться",
+    "have": "Нет аккаунта?",
+    "button": "Войти",
   },
   "validations": {
     "params": "{property} and {model}' and {min}",
     "emailerror": "Вы ввели неверный email",
     "required": "Это поле обязательное",
     "minLength": "Минимальное количество символов - {min}.",
-    "maxLength": "Максимальное количество символов {max}."
+    "maxLength": "Максимальное количество символов - {max}."
   }
 }
