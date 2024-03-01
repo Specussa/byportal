@@ -25,5 +25,12 @@
     "pass": "Password",
     "passplace": "Enter password",
     "passerror": "Invalid password"
+  },
+  "validations": {
+    "params": "{property} and {model}' and {min}",
+    "emailerror": "You entered an incorrect email",
+    "required": "This field is required",
+    "minLength": "Minimum number of characters - {min}.",
+    "maxLength": "Maximum number of characters {max}."
   }
 }

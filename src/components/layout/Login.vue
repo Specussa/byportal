@@ -2,18 +2,18 @@
 import {ref, computed} from 'vue'
 import useVuelidate from '@vuelidate/core'
 import Input from '@/components/Validation.vue'
-import {helpers, minLength, maxLength, numeric, email, sameAs} from '@vuelidate/validators'
-import { required } from "@/i18n/translation";
+import { required, minLength, maxLength, emailerror } from "@/i18n/translation";
 
 
 const emailField = ref('')
 const passwordField = ref('')
 
 const rules = computed(() => ({
-  emailField: { required, minLength: minLength(10) }
+  emailField: { required, minLength, maxLength, emailerror },
+  passwordField: { required },
 }))
 
-const v = useVuelidate(rules, {emailField})
+const v = useVuelidate(rules, {emailField, passwordField})
 
 const submitForm = () => {
   v.value.$touch()
@@ -59,7 +59,8 @@ const logpassShowHide = () => {
           :label="$t('login.pass')"
           name="password"
           :placeholder="$t('login.passplace')"
-          v-model:value="passwordField"
+          v-model:value="v.passwordField.$model"
+          :error="v.passwordField.$errors"
           type="password"/>
         <a class="form__password_button" @click="logpassShowHide">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
