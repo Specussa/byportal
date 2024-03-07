@@ -1,47 +1,58 @@
 <script setup>
 import LayoutLogin from "@/components/layout/Login.vue"
+import LayoutForgot from "@/components/layout/Forgot.vue"
+import LayoutRegistration from "@/components/layout/Registration.vue"
 import { ref } from "vue";
 
+const isOpenPopup = ref(false);
 const isOpenLogin = ref(false);
+const isOpenForgot = ref(false);
+const isOpenRegistration = ref(false);
 
 const toggleLogin = () => {
-  isOpenLogin.value = !isOpenLogin.value;
-  document.querySelector('.form__popup').scrollTop = 0;
-  if (isOpenLogin.value) {
+  if (isOpenPopup.value === false) {
+    isOpenPopup.value = true;
+    isOpenLogin.value = true;
+    isOpenForgot.value = false;
+    isOpenRegistration.value = false;
+    document.querySelector('.form__forgot').classList.remove("active");
+    document.querySelector('.form__registration').classList.remove("active");
+    document.querySelector('.form__login').classList.add("active");
+    document.querySelector('.form__login_block').scrollTop = 0;
     document.documentElement.classList.add("noscroll");
   } else {
+    isOpenPopup.value = false;
     document.documentElement.classList.remove("noscroll");
   }
 };
 
+if (isOpenLogin.value === false && isOpenForgot.value === false && isOpenRegistration.value === false) {
+  isOpenPopup.value = false;
+  document.documentElement.classList.remove("noscroll");
+}
+
 const clickCloseHeaderForm = () => {
-  isOpenLogin.value = false;
+  isOpenPopup.value = false;
   document.documentElement.classList.remove("noscroll");
 };
 
 const clickOverlay = () => {
-  isOpenLogin.value = false;
+  isOpenPopup.value = false;
   document.documentElement.classList.remove("noscroll");
 };
 
-// const barVM = new Vue({
-//   el: '#bar',
-//   data: {
-//     isActive: false
-//   }
-// })
-
-// new Vue({
-//   el: '#toggle',
-//   methods: {
-//     show: function() {
-//       barVM.isActive = true
-//     }
-//   }
-// })
+if (isOpenPopup.value === false) {
+  document.addEventListener('keyup', function (evt) {
+    if (evt.keyCode === 27) {
+      isOpenPopup.value = false;
+      document.documentElement.classList.remove("noscroll");
+    }
+  });
+}
 </script>
 
 <template>
+  <div :class="['overlay', { active: isOpenPopup }]" @click="clickOverlay"><span></span></div>
   <header class="header">
     <div class="container header__container">
       <div class="header__block">
@@ -98,7 +109,7 @@ const clickOverlay = () => {
       </div>
     </div>
   </header>
-  <div :class="['header__form', { active: isOpenLogin }]">
+  <div :class="['header__form', { active: isOpenPopup }]">
     <button class="header__form_close" @click="clickCloseHeaderForm">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M6.46967 6.46967C6.76256 6.17678 7.23744 6.17678 7.53033 6.46967L17.5303 16.4697C17.8232 16.7626 17.8232 17.2374 17.5303 17.5303C17.2374 17.8232 16.7626 17.8232 16.4697 17.5303L6.46967 7.53033C6.17678 7.23744 6.17678 6.76256 6.46967 6.46967Z" fill="currentColor"/>
@@ -106,8 +117,9 @@ const clickOverlay = () => {
       </svg>
     </button>
     <LayoutLogin :openLogin="isOpenLogin" />
+    <LayoutForgot :openForgot="isOpenForgot" />
+    <LayoutRegistration :openRegistration="isOpenRegistration" />
   </div>
-  <div :class="['overlay', { active: isOpenLogin }]" @click="clickOverlay"><span></span></div>
 </template>
 
 <script>

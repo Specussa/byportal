@@ -28,11 +28,33 @@
     "have": "Don't have an account?",
     "button": "Сome in",
   },
+  "registration": {
+    "head": "Создать аккаунт",
+    "desc": "Еще немного и вы сможете стать частью мира By-portal!",
+    "email": "E-mail",
+    "emailplace": "Введите e-mail",
+    "pass": "Пароль",
+    "passplace": "Введите пароль",
+    "forgot": "Забыли пароль?",
+    "login": "Войти",
+    "have": "Уже есть аккаунт?",
+    "button": "Создать аккаунт"
+  },
+  "forgot": {
+    "head": "Восстановление пароля",
+    "desc": "Кажется, вы забыли пароль. Пожалуйста, введите Ваш адрес электронной почты.",
+    "email": "E-mail",
+    "emailplace": "Введите e-mail",
+    "login": "Войти",
+    "have": "Я вспомнил/а пароль",
+    "button": "Отправить"
+  },
   "validations": {
     "params": "{property} and {model}' and {min}",
     "emailerror": "You entered an incorrect email",
     "required": "This field is required",
     "minLength": "Minimum number of characters - {min}.",
-    "maxLength": "Maximum number of characters - {max}."
+    "maxLength": "Maximum number of characters - {max}.",
+    "wrongpass": "Password mismatch."
   }
 }

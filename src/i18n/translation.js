@@ -8,6 +8,7 @@ export const required = withI18nMessage(validators.required);
 export const emailerror = withI18nMessage(validators.email);
 export const minLength = withI18nMessage(validators.minLength(3));
 export const maxLength = withI18nMessage(validators.maxLength(30));
+export const wrongpass = withI18nMessage(validators.sameAs, { withArguments: true });
 
 const Trans = {
   get defaultLocale() {
